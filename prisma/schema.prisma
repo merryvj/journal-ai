@@ -44,7 +44,7 @@ model Analysis {
   entry   JournalEntry @relation(fields: [entryId], references: [id])
 
   mood     String
-  sumary   String  @db.Text
+  summary  String  @db.Text
   color    String
   negative Boolean
 
