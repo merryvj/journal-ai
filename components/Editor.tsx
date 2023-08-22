@@ -8,11 +8,11 @@ const Editor = ({ entry }) => {
     const [value, setValue] = useState(entry.content)
     const [isLoading, setIsLoading] = useState(false)
     useAutosave({
-        
         data: value,
         onSave: async (_value) => {
             setIsLoading(true)
-            const updated = await updateEntry(entry.id, _value)
+            const {data} = await updateEntry(entry.id, _value)
+            setValue(data)
             setIsLoading(false)
 
         }
