@@ -17,10 +17,10 @@ const getEntry = async (id) => {
 const EntryPage = async ({params}) => {
     const entry = await getEntry(params.id)
     const analysisData = [
-        {name: 'Summary', value: ''},
-        {name: 'Subject', value: ''},
-        {name: 'Mood', value: ''},
-        {name: 'Negative', value: false},
+        {name: 'Summary', value: 'Test'},
+        {name: 'Subject', value: 'Bad'},
+        {name: 'Mood', value: 'Happy'},
+        {name: 'Negative', value: 'False'},
     ]
     return (
         <div className="w-full h-full grid grid-cols-3">
@@ -36,9 +36,9 @@ const EntryPage = async ({params}) => {
                     {analysisData.map(item => (
                         <li
                             key={item.name}
-                            className="flex items-center justify-between"
+                            className="px-2 py-2 flex items-center justify-between border-b border-t border-black/10"
                         >
-                            <span>{item.name}</span>
+                            <span className="text-lg font-semibold">{item.name}</span>
                             <span>{item.value}</span>
                         </li>
                     ))}
