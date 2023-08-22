@@ -3,6 +3,7 @@ import EntryCard from "@/components/EntryCard"
 import { getUserByClerkId } from "@/utils/auth"
 import { prisma } from "@/utils/db"
 import Link from "next/link"
+import { analyze } from "@/utils/ai"
 
 const getEntries = async () => {
     const user = await getUserByClerkId()
@@ -17,6 +18,8 @@ const getEntries = async () => {
         analysis: true,
       },
     })
+
+    await analyze('give me ideas for a pun based on the word merry')
     
     
     return data
@@ -24,7 +27,6 @@ const getEntries = async () => {
 
 const JournalPage = async () => {
     const entries = await getEntries()
-
 
     return (
         <div className="h-full p-10 bg-slate-400/10">
