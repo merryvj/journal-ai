@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }) => {
                         <UserButton/>
                     </div>
                 </header>
-                <div className="h-[calc(100vh-60px)]">
+                <div className="h-[calc(100vh-60px)] w-full">
                     {children}
                 </div>
             </div>
