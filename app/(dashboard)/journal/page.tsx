@@ -13,15 +13,10 @@ const getEntries = async () => {
       },
       orderBy: {
         createdAt: 'desc',
-      },
-      include: {
-        analysis: true,
-      },
+      }
     })
+    
 
-    await analyze('give me ideas for a pun based on the word merry')
-    
-    
     return data
   }
 

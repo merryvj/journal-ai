@@ -22,5 +22,7 @@ export const createNewEntry = async () => {
     if (res.ok) {
         const data = await res.json()
         return data.data
+    } else {
+        throw new Error('something went wrong with api server!')
     }
 }

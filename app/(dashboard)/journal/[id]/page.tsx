@@ -8,7 +8,10 @@ const getEntry = async (id) => {
         where: {
             userId: user.id,
             id
-        }
+        },
+        include: {
+            analysis: true,
+        },
     })
 
     return entry
@@ -16,11 +19,12 @@ const getEntry = async (id) => {
 
 const EntryPage = async ({params}) => {
     const entry = await getEntry(params.id)
+    console.log(entry);
+    const {mood, summary, color, negative} = entry.analysis;
     const analysisData = [
-        {name: 'Summary', value: 'Test'},
-        {name: 'Subject', value: 'Bad'},
-        {name: 'Mood', value: 'Happy'},
-        {name: 'Negative', value: 'False'},
+        {name: 'Mood', value: mood},
+        {name: 'Summary', value: summary},
+        {name: 'Negative', value: negative ? 'True' : 'False'},
     ]
     return (
         <div className="w-full h-full grid grid-cols-3">
@@ -28,7 +32,7 @@ const EntryPage = async ({params}) => {
             <Editor entry={entry}/>
            </div>
            <div className="border-l border-black/10">
-            <div className="bg-blue-300 px-6 py-10">
+            <div className="px-6 py-10" style={{backgroundColor: color}}>
                 <h2 className="text-2xl">Analysis</h2>
             </div>
             <div>
